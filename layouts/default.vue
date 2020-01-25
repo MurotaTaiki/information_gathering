@@ -13,11 +13,12 @@
  <style lang="scss">
  body{
    margin: 0;
+   
  }
 .header{
   width: 100%;
   height: 60px;
-  background-color: aqua;
+  background-color: skyblue;
   .header-info {
     display: inline-block;
     margin: 0;
