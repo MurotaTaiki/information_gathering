@@ -29,7 +29,7 @@ export default{
   },
   methods: {
     login(){
-      alert('ログインしました')
+      this.$router.push('/info')
     }
   }
 }
