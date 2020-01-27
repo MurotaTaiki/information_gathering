@@ -91,6 +91,9 @@ export default {
       //   name: 'テスト'
       // }]
     }
+  },
+  mounted() {
+    // alert(this.$store.state.userId)
   }
 }
 </script>

@@ -19,6 +19,8 @@
 
 <script>
 import axios from 'axios'
+import { mapActions } from 'vuex'
+
 export default{
   data(){
     return{
@@ -29,10 +31,16 @@ export default{
     }
   },
   methods: {
+    ...mapActions(['setUser']),
     login(){
       axios.post('http://localhost:8080/api/login', this.form)
         .then(response => {
-          response.data ? this.$router.push('/info') : alert('ログインに失敗しました')
+          if(response.data){
+            this.setUser(this.form.userId)
+            this.$router.push('/info')
+          }else{
+            alert('ログインに失敗しました')
+          }
         }).catch(error => {
           alert(error)
         })
