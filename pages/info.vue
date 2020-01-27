@@ -98,10 +98,10 @@ export default {
 <style scoped lang="scss">
 .container{
   margin: 20px;
-}
-.box-card{
-  display: inline-block;
-  width: 30%;
-  margin: 10px 1.3%;
+  .box-card{
+    display: inline-block;
+    width: 30%;
+    margin: 10px 1.3%;
+  }
 }
 </style>

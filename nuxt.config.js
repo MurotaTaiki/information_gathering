@@ -1,4 +1,11 @@
 module.exports = {
+  devServer: {
+    proxy: {
+      "/api/": {
+        target: "http://localhost:3000",
+      }
+    }
+  },
   /*
   ** Headers of the page
   */
@@ -41,6 +48,9 @@ module.exports = {
   ],
   css: [
     'element-ui/lib/theme-chalk/index.css'
-  ]
+  ],
+  modules: [
+    "@nuxtjs/axios"
+  ],
 }
 

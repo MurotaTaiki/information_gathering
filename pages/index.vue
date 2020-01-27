@@ -6,7 +6,7 @@
       </div>
       <el-form ref="form" :model="form" label-width="120px">
         <el-form-item label="ユーザー名">
-          <el-input v-model="form.name"></el-input>
+          <el-input v-model="form.userId"></el-input>
         </el-form-item>
         <el-form-item label="パスワード">
           <el-input type="password" v-model="form.password"></el-input>
@@ -18,18 +18,24 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default{
   data(){
     return{
       form: {
-        name: '',
+        userId: '',
         password: ''
       }
     }
   },
   methods: {
     login(){
-      this.$router.push('/info')
+      axios.post('http://localhost:8080/api/login', this.form)
+        .then(response => {
+          response.data ? this.$router.push('/info') : alert('ログインに失敗しました')
+        }).catch(error => {
+          alert(error)
+        })
     }
   }
 }
