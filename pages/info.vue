@@ -2,12 +2,32 @@
   <div class="container">
     <el-tabs type="border-card">
       <el-tab-pane label="ブログ">
+        <el-button type="primary" class="add-button" @click="dialogFormVisible = true">追加</el-button>
+        <el-dialog title="ブログ追加" :visible.sync="dialogFormVisible">
+          <el-form :model="form">
+            <el-form-item label="タイトル">
+              <el-input v-model="form.title" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="URL">
+              <el-input v-model="form.url" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="説明">
+              <el-input v-model="form.description" autocomplete="off"></el-input>
+            </el-form-item>
+          </el-form>
+          <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible = false">閉じる</el-button>
+            <el-button type="primary" @click="dialogFormVisible = false">登録</el-button>
+          </span>
+        </el-dialog>
         <blog v-for="(blog, index) in blogs" :key="index" :blog="blog" />
       </el-tab-pane>
       <el-tab-pane label="youtube">
+        <el-button type="primary" class="add-button" @click="addYoutube">追加</el-button>
         <youtube v-for="(youtube, index) in youtubes" :key="index" :youtube="youtube" />
       </el-tab-pane>
       <el-tab-pane label="note">
+        <el-button type="primary" class="add-button" @click="addNote">追加</el-button>
         <note v-for="(note, index) in notes" :key="index" :note="note" />
       </el-tab-pane>
       <el-tab-pane label="履歴">
@@ -35,7 +55,18 @@ export default {
     return{
       blogs: [],
       youtubes: [],
-      notes: []
+      notes: [],
+      dialogFormVisible: false,
+        form: {
+          title: '',
+          url: '',
+          description: '',
+          date2: '',
+          delivery: false,
+          type: [],
+          resource: '',
+          desc: ''
+        },
     }
   },
   mounted() {
@@ -63,6 +94,17 @@ export default {
           }
         });
       })
+  },
+  methods: {
+    addBlog(){
+      alert('ブログ')
+    },
+    addYoutube(){
+      alert('youtube')
+    },
+    addNote(){
+      alert('note')
+    }
   }
 }
 </script>
@@ -70,6 +112,10 @@ export default {
 <style scoped lang="scss">
 .container{
   margin: 20px;
+  .add-button{
+    display: block;
+    margin: 0 0 0 auto;
+  }
   .box-card{
     display: inline-block;
     width: 30%;
